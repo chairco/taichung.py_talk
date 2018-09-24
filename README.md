@@ -13,4 +13,16 @@ Python 基本上是以`同步`程式開發精神為設計，因此 Python `非�
 
 ### 大綱
 
-TBD
++ 非同步的策略介紹
++ 非阻塞式事件驅動與 Coroutine 的非同步策略
++ 協同程序(Coroutine)是什麼？可以吃嗎？（透過一個同步且阻塞式的 Socket 範例程式做說明）
+    - Non-blocking I/O
+    - Callback
+    - Event loop
+    - Coroutine
++ 登愣！async, await, asyncio 登場
+    - async 創造協同程序
+    - async 創造產生器
+    - 怎麼使用 asyncio 的 eventloop 來建立非同步
++ Demo 
+    - serial port
