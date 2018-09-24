@@ -1,1 +1,16 @@
-# Taichung.py.talk
+# taichung.py.talk 分享
+
+
+## 20181013 搞懂 Python 協同程序(coroutine): 輕鬆學會非同步程式開發 
+
+
+### 摘要
+
+單一執行緒(single-thread)底下允許程式來決定程式執行的順序，是基於`協同程序(Coroutine)`來實現非同步，是`非同步`的其中一種策略。因為 Python(`CPython`) 的 `GIL(Global Interpreter Lock)` 特性，這個方法提供了解決**某些**類型`非同步`問題。
+
+Python 基本上是以`同步`程式開發精神為設計，因此 Python `非同步`開發與`同步`開發是兩種不同的思維與世界。本次將會分享 Python 使用`協同程序`開發非同步與其概念，並且如何手寫一個`協同程序`，接續介紹 3.5 版後的 `asyc` 與 `await` 語法所創造的協同程序，最後會以一個 Serial port 範例來快快樂樂實現 Python 非同步程式開發。
+
+
+### 大綱
+
+TBD
