@@ -5,6 +5,8 @@ import aiohttp
 
 
 url = 'http://localhost:5000'
+URLS = ['/foo', '/bar']
+
 
 @asyncio.coroutine
 def fetch_page(session, url):
@@ -33,8 +35,7 @@ def async_syntax():
     asyncio.set_event_loop(loop)
 
     tasks = [
-        asyncio.ensure_future(async_fetch_page(f"{url}/foo")),
-        asyncio.ensure_future(async_fetch_page(f"{url}/bar"))
+        asyncio.ensure_future(async_fetch_page(f"{url}{u}")) for u in URLS
     ]
     loop.run_until_complete(asyncio.wait(tasks))
     loop.close()
@@ -52,8 +53,7 @@ def yieldfrom_syntax():
     tasks = [
         #loop.create_task(fetch_page(session, f"{url}/foo")),
         #loop.create_task(fetch_page(session, f"{url}/bar"))
-        asyncio.ensure_future(fetch_page(session, f"{url}/foo")),
-        asyncio.ensure_future(fetch_page(session, f"{url}/bar"))
+        asyncio.ensure_future(fetch_page(session, f"{url}{u}")) for u in URLS
     ]
 
     loop.run_until_complete(asyncio.wait(tasks))

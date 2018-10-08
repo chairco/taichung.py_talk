@@ -8,7 +8,7 @@ import time
 selector = DefaultSelector()
 n_jobs = 0
 
-URLS = ['/foo', '/bar'] * 80
+URLS = ['/foo', '/bar']
 
 
 class Future:
