@@ -3,6 +3,8 @@
 
 ## 20181013 搞懂 Python 協同程序(Coroutine): 快樂學會非同步程式開發 
 
+[投影片](https://slides.com/chairco/how_coroutine_work_in_python/#/)
+
 
 ### 摘要
 
@@ -17,7 +19,7 @@ Python 基本上是以`同步`程式開發精神為設計，因此 Python `非�
 
 + 非同步的策略介紹
 + 非阻塞式事件驅動與 Coroutine 的非同步策略
-+ 協同程序(Coroutine)是什麼？可以吃嗎？（透過一個同步且阻塞式的 Socket 來連接網頁做範例程式做說明）
++ 協同程序(Coroutine)是什麼？可以吃嗎？（透過一個同步且阻塞式的 Socket 來連接網頁做範例程式說明）
     - Non-blocking I/O
     - Callback
     - Event loop
@@ -35,3 +37,9 @@ Python 基本上是以`同步`程式開發精神為設計，因此 Python `非�
 喜愛使用 Python 開發軟體，目前是一位資料與數據分析工程師。喜歡貓貓與狗狗，因此假日的嗜好就是帶著另一半去餵食浪浪們。
 
 more: https://chairco.github.io
+
+
+### 文章參考
+
++ [Python asyncio cheatsheet](https://www.pythonsheets.com/notes/python-asyncio.html)
++ [async def v.s @asyncio.coroutine](https://stackoverflow.com/questions/40571786/asyncio-coroutine-vs-async-def)
