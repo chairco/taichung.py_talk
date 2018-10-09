@@ -1,4 +1,5 @@
 #-*- coding:utf-8 -*-
+import alog
 import time
 import asyncio
 import aiohttp
@@ -13,7 +14,7 @@ def fetch_page(session, url):
     resp = yield from session.get(url)
     if resp.status == 200:
         text = yield from resp.text()
-        print(f"GET {resp.url} HTTP/1.0 {resp.status} OK")
+        alog.info(f"GET {resp.url} HTTP/1.0 {resp.status} OK")
 
     yield from session.close()
 
@@ -23,7 +24,7 @@ async def async_fetch_page(url):
         resp = await session.get(url)
         if resp.status == 200:
             text = await resp.text()
-            print(f"GET {resp.url} HTTP/1.0 {resp.status} OK")
+            alog.info(f"GET {resp.url} HTTP/1.0 {resp.status} OK")
 
 
 def async_syntax():
@@ -39,7 +40,7 @@ def async_syntax():
     ]
     loop.run_until_complete(asyncio.wait(tasks))
     loop.close()
-    print(f'async syntax Coroutines took {time.time() - start:.1f} sec')
+    alog.info(f'async syntax Coroutines took {time.time() - start:.1f} sec')
 
 
 def yieldfrom_syntax():
@@ -58,7 +59,7 @@ def yieldfrom_syntax():
 
     loop.run_until_complete(asyncio.wait(tasks))
     loop.close()
-    print(f'yieldfrom syntax Coroutines took {time.time() - start:.1f} sec')
+    alog.info(f'yieldfrom syntax Coroutines took {time.time() - start:.1f} sec')
 
 
 if __name__ == '__main__':
