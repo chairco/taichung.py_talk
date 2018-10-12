@@ -10,7 +10,7 @@ n_jobs = 0
 
 URLS = ['/foo', '/bar']
 
-
+'''
 class Future:
     def __init__(self):
         self.callbacks = []
@@ -31,9 +31,35 @@ class Task:
         except StopIteration:
             return
         future.callbacks.append(self.step)
+'''
+
+class Future:
+
+    def __init__(self):
+        self.callbacks = None
+
+    def resolve(self):
+        self.callbacks()
+
+    def __await__(self):
+        yield self
 
 
-def get(path):
+class Task:
+
+    def __init__(self, coro):
+        self.coro = coro
+        self.step()
+
+    def step(self):
+        try:
+            f = self.coro.send(None)
+        except StopIteration:
+            return
+        f.callbacks = self.step
+
+
+async def get(path):
     global n_jobs
     n_jobs += 1
     s = socket.socket()
@@ -45,7 +71,8 @@ def get(path):
 
     f = Future()
     selector.register(s.fileno(), EVENT_WRITE, data=f)
-    yield f
+    #yield f
+    await f
 
     selector.unregister(s.fileno())
     request = 'GET %s HTTP/1.0\r\n\r\n' % path
@@ -55,7 +82,8 @@ def get(path):
     while True:
         f = Future()
         selector.register(s.fileno(), EVENT_READ, data=f)
-        yield f
+        #yield f
+        await f
         selector.unregister(s.fileno())
         
         chunk = s.recv(1000)
